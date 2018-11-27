@@ -1,0 +1,61 @@
+@mixin bg-icon($url, $color) {
+  $base-color: str-slice(inspect($color), 2);
+  background: unquote('url("' + $url + "?fill=%23" + $base-color +'")') center no-repeat;
+  background-size: contain;
+}
+// Example of using
+//.icon {
+//  @include bg-icon('../assets/img/icons/svg/like.svg', $dark-grey);
+//  width: 30px;
+//  height: 30px;
+//}
+
+
+/* Centering mixin for absolutely positioned elements */
+@mixin center($axis: "both"){
+  position:absolute;
+  @if $axis == "y"{
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @if $axis == "x"{
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @if $axis == "both"{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($foreground-color, white, 50%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

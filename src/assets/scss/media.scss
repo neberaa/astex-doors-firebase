@@ -1,0 +1,31 @@
+@import "variables";
+
+@mixin media($point) {
+  @if $point == phone {
+    @media (max-width: $tablet - 1) { @content; }
+  }
+
+  @else if $point == phone-landscape {
+    @media (max-width: $tablet - 1) and (orientation: landscape) { @content; }
+  }
+
+  @else if $point == tablet {
+    @media (min-width: $tablet) and (max-width: $desktop - 1) { @content; }
+  }
+
+  @else if $point == tablet-landscape {
+    @media (min-width: $tablet) and (max-width: $desktop - 1) and (orientation: landscape) { @content; }
+  }
+
+  @else if $point == tablet-portrait {
+    @media (min-width: $tablet) and (max-width: $desktop - 1) and (orientation: portrait) { @content; }
+  }
+
+  @else if $point == desktop {
+    @media (min-width: $desktop) { @content; }
+  }
+
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}

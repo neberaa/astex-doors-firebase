@@ -1,0 +1,59 @@
+@import 'fonts';
+@import 'media';
+@import 'mixins';
+@import 'sprite';
+@import 'variables';
+@import 'page-components/navigation';
+@import 'page-components/main';
+
+* {
+  box-sizing: border-box;
+}
+#app {
+  font-family: 'GothamPro', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-size: 16px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.section {
+  width: 100%;
+  height: 100vh;
+}
+
+h1 {
+  font-family: 'GP-bold', Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 36px;
+  @include media(phone) {
+    font-size: 48px;
+  }
+}
+h3 {
+  font-family: 'GP-light', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  @include media(phone) {
+    font-size: 24px;
+  }
+}
+h4 {
+  font-family: 'GP-light', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  @include media(phone) {
+    font-size: 20px;
+  }
+}
+p.small {
+  font-size: 12px;
+  margin: 0;
+  @include media(phone) {
+    font-size: 14px;
+  }
+}
+
+@include scrollbars(10px, $dark-grey, $light-grey);
